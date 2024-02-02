@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dha5ud6eks3a"]
+
+[ext_resource type="Texture2D" uid="uid://d0h87d0yn5dt8" path="res://assets/scene/colored_castle.png" id="1_hyqr6"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_nex71"]
+[ext_resource type="PackedScene" uid="uid://b2wu3ievpvjxo" path="res://cup/cup.tscn" id="2_y7x6p"]
+[ext_resource type="PackedScene" uid="uid://kxtbne6iw0cj" path="res://water/water.tscn" id="4_vs111"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_nex71")
+
+[node name="ColoredCastle" type="Sprite2D" parent="."]
+position = Vector2(512, 311)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_hyqr6")
+
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 324.0
+offset_bottom = 174.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(102, 316)
+
+[node name="Water" parent="." instance=ExtResource("4_vs111")]
+z_index = 1
+position = Vector2(0, 562)
+
+[node name="Cup" parent="." instance=ExtResource("2_y7x6p")]
+position = Vector2(513, 337)
+
+[node name="Cup2" parent="." instance=ExtResource("2_y7x6p")]
+position = Vector2(656, 221)
+
+[node name="Cup3" parent="." instance=ExtResource("2_y7x6p")]
+position = Vector2(794, 417)
