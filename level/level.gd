@@ -1,6 +1,7 @@
 extends Node2D
 @onready var debug_label = $DebugLabel
 @onready var spawn_point = $SpawnPoint
+
 const animal_scene: PackedScene = preload("res://animal/animal.tscn")
 
 

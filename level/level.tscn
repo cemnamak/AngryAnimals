@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dha5ud6eks3a"]
+[gd_scene load_steps=7 format=3 uid="uid://dha5ud6eks3a"]
 
 [ext_resource type="Texture2D" uid="uid://d0h87d0yn5dt8" path="res://assets/scene/colored_castle.png" id="1_hyqr6"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_nex71"]
-[ext_resource type="PackedScene" uid="uid://b2wu3ievpvjxo" path="res://cup/cup.tscn" id="2_y7x6p"]
+[ext_resource type="PackedScene" uid="uid://borg2pyt16awt" path="res://scorer/scorer.tscn" id="4_uo4it"]
 [ext_resource type="PackedScene" uid="uid://kxtbne6iw0cj" path="res://water/water.tscn" id="4_vs111"]
+[ext_resource type="PackedScene" uid="uid://2flr56gp4jiv" path="res://game_ui/game_ui.tscn" id="5_78tyf"]
+[ext_resource type="PackedScene" uid="uid://wnjdq775f2mh" path="res://launch_area/launch_area.tscn" id="6_gxp4l"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nex71")
@@ -22,17 +24,17 @@ pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
-position = Vector2(102, 316)
+position = Vector2(161, 290)
 
 [node name="Water" parent="." instance=ExtResource("4_vs111")]
 z_index = 1
 position = Vector2(0, 562)
 
-[node name="Cup" parent="." instance=ExtResource("2_y7x6p")]
-position = Vector2(513, 337)
+[node name="Scorer" parent="." instance=ExtResource("4_uo4it")]
 
-[node name="Cup2" parent="." instance=ExtResource("2_y7x6p")]
-position = Vector2(656, 221)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Cup3" parent="." instance=ExtResource("2_y7x6p")]
-position = Vector2(794, 417)
+[node name="GameUi" parent="CanvasLayer" instance=ExtResource("5_78tyf")]
+
+[node name="LaunchArea" parent="." instance=ExtResource("6_gxp4l")]
+position = Vector2(62, 337)

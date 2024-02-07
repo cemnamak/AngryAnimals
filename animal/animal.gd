@@ -17,6 +17,7 @@ const IMPULSE_MAX: float = 1200.0
 
 
 var _dead: bool = false
+var _hide_animal: bool = false
 
 var _start: Vector2 = Vector2.ZERO
 var _drag_start: Vector2 = Vector2.ZERO
@@ -30,9 +31,12 @@ var _arrow_scale_x: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SignalManager.on_cup_destroyed.connect(on_cup_destroyed)
 	_arrow_scale_x = arrow.scale.x
 	_start = position
 	arrow.hide()
+
+	
 
 func set_new_state(new_state:ANIMAL_STATE)-> void:
 	_state = new_state
@@ -134,14 +138,13 @@ func play_collision()-> void:
 func die()-> void:
 	if _dead:
 		return
-	_dead = true
-
-	
+	_dead = true	
 	queue_free()
 	SignalManager.on_animal_died.emit()
 
 func _on_screen_exited():	
-	die()
+	if _hide_animal == false:
+		die()
 
 
 func _on_input_event(viewport, event:InputEvent, shape_idx):
@@ -151,11 +154,16 @@ func _on_input_event(viewport, event:InputEvent, shape_idx):
 	elif event.is_action_released("drag"):
 		set_new_state(ANIMAL_STATE.RELEASE)
 	
+func on_cup_destroyed()-> void:
+	queue_free()
 
+func respawn()-> void:
+	_hide_animal = true
+	hide()
+	var cb = get_colliding_bodies()
+	if cb.size() > 0:
+		cb[0].vanish()
 
 func _on_sleeping_state_changed():
 	if sleeping:
-		var cb = get_colliding_bodies()
-		if cb.size() > 0:
-			cb[0].vanish()
-		call_deferred("die")
+		respawn()

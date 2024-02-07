@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtmikcgtkg48d"]
+
+[ext_resource type="PackedScene" uid="uid://dha5ud6eks3a" path="res://level/level.tscn" id="1_nyti6"]
+[ext_resource type="PackedScene" uid="uid://b2wu3ievpvjxo" path="res://cup/cup.tscn" id="2_3vi1x"]
+[ext_resource type="PackedScene" uid="uid://mu0ml4ulmxfi" path="res://block/block.tscn" id="3_rk4t7"]
+
+[node name="Level" instance=ExtResource("1_nyti6")]
+
+[node name="Cup" parent="." index="4" instance=ExtResource("2_3vi1x")]
+position = Vector2(375, 476)
+
+[node name="Cup2" parent="." index="5" instance=ExtResource("2_3vi1x")]
+position = Vector2(701, 227)
+
+[node name="Cup3" parent="." index="6" instance=ExtResource("2_3vi1x")]
+position = Vector2(700, 379)
+
+[node name="block" parent="." index="7" instance=ExtResource("3_rk4t7")]
+position = Vector2(431, 150)
+rotation = 0.698132
+scale = Vector2(0.2, 0.6)
+
+[node name="block2" parent="." index="8" instance=ExtResource("3_rk4t7")]
+position = Vector2(286, 376)
+rotation = -0.888373
+scale = Vector2(0.2, 0.6)
+
+[node name="block3" parent="." index="9" instance=ExtResource("3_rk4t7")]
+position = Vector2(581, 6)
+rotation = 1.5708
+scale = Vector2(0.2, 0.6)
+
+[node name="block5" parent="." index="10" instance=ExtResource("3_rk4t7")]
+position = Vector2(808, 60)
+rotation = 0.619592
+scale = Vector2(0.2, 0.6)
